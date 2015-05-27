@@ -9,13 +9,18 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+static const unsigned window_height = 600;
+static const unsigned window_width = 600;
+
+
 int main()
 {
   //Init the win
-  sf::RenderWindow window(sf::VideoMode(600, 600), "SFML PingPong");
+  sf::RenderWindow window(sf::VideoMode(window_height, window_width), "SFML PingPong");
+  //window.setFramerateLimit(55);
   window.setVerticalSyncEnabled(true);
   //create background with color "white
-  sf::RectangleShape background(sf::Vector2f(600.f, 600.f));
+  sf::RectangleShape background(sf::Vector2f(static_cast<float>(window_height), static_cast<float>(window_width)));
   background.setFillColor(sf::Color::White);
 
   //load texture
@@ -27,10 +32,9 @@ int main()
     return 1;
   }
   //put texture in sprite
+  
   smiley.setSmooth(true);
-  sf::Sprite sprite;
-  sprite.setTexture(smiley);
-  sprite.setPosition(275.f, 275.f);
+  sf::Sprite sprite(smiley, sf::IntRect(0,0,76,72));
   sprite.setScale(.5f,.5f);
 
   //while running loop
@@ -48,21 +52,35 @@ int main()
     }
     
   }
+
    //smooth movement
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-      sprite.move(0.f, -5.f);
-      //std::cout << "notized key W" << std::endl;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-      sprite.move(0.f, 5.f);
-        //std::cout << "notized key S" << std::endl;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-      sprite.move(-5.f, 0.f);
-      //std::cout << "notized key A" << std::endl;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-      sprite.move(5.f, 0.f);
-      //std::cout << "notized key D" << std::endl;
+    sprite.move(0.f, -5.f);
+    //std::cout << "notized key W" << std::endl;
+  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    sprite.move(0.f, 5.f);
+      //std::cout << "notized key S" << std::endl;
+  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    sprite.move(-5.f, 0.f);
+    //std::cout << "notized key A" << std::endl;
+  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    sprite.move(5.f, 0.f);
+    //std::cout << "notized key D" << std::endl;
      
-    
+   //clamping
+  if (sprite.getPosition().x < 0)
+    sprite.setPosition(0.f, sprite.getPosition().y);
+  //left edge
+  else if (sprite.getPosition().x + sprite.getGlobalBounds().width >= window_width)
+    sprite.setPosition(window_width - sprite.getGlobalBounds().width, sprite.getPosition().y);
+  //right edge
+  else if (sprite.getPosition().y < 0)
+    sprite.setPosition(sprite.getPosition().x, 0.f);
+  //top edge
+  else if (sprite.getPosition().y + sprite.getGlobalBounds().height >= window_height)
+    sprite.setPosition(sprite.getPosition().x, window_height - sprite.getGlobalBounds().height);
+  //bottom edge
+  
   
 
   window.clear();
