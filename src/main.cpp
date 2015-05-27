@@ -12,7 +12,8 @@
 static const unsigned window_height = 600;
 static const unsigned window_width = 600;
 
-
+void keyPressHandling(sf::Sprite& sprite);
+void clampingSprite(sf::Sprite& sprite);
 int main()
 {
   //Init the win
@@ -53,21 +54,40 @@ int main()
     
   }
 
-   //smooth movement
+  keyPressHandling(sprite);
+  clampingSprite(sprite);
+
+  window.clear();
+  window.draw(background);
+  window.draw(sprite);
+  window.display();
+  }
+  return 0;
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard:A))
+  {
+    std::cout << "Test";
+  }
+}
+void keyPressHandling(sf::Sprite& sprite)
+{
+  //smooth movement
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     sprite.move(0.f, -5.f);
-    //std::cout << "notized key W" << std::endl;
+  //std::cout << "notized key W" << std::endl;
   else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     sprite.move(0.f, 5.f);
-      //std::cout << "notized key S" << std::endl;
+  //std::cout << "notized key S" << std::endl;
   else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     sprite.move(-5.f, 0.f);
-    //std::cout << "notized key A" << std::endl;
+  //std::cout << "notized key A" << std::endl;
   else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     sprite.move(5.f, 0.f);
-    //std::cout << "notized key D" << std::endl;
-     
-   //clamping
+  //std::cout << "notized key D" << std::endl;
+}
+
+void clampingSprite(sf::Sprite& sprite)
+{
+  //clamping
   if (sprite.getPosition().x < 0)
     sprite.setPosition(0.f, sprite.getPosition().y);
   //left edge
@@ -80,13 +100,4 @@ int main()
   else if (sprite.getPosition().y + sprite.getGlobalBounds().height >= window_height)
     sprite.setPosition(sprite.getPosition().x, window_height - sprite.getGlobalBounds().height);
   //bottom edge
-  
-  
-
-  window.clear();
-  window.draw(background);
-  window.draw(sprite);
-  window.display();
-  }
-  return 0;
 }
