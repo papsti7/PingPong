@@ -12,6 +12,9 @@
 static const unsigned window_height = 600;
 static const unsigned window_width = 600;
 
+
+
+
 void keyPressHandling(sf::Sprite& sprite);
 void clampingSprite(sf::Sprite& sprite);
 int main()
@@ -63,10 +66,7 @@ int main()
   window.display();
   }
   return 0;
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard:A))
-  {
-    std::cout << "Test";
-  }
+  
 }
 void keyPressHandling(sf::Sprite& sprite)
 {
@@ -91,13 +91,13 @@ void clampingSprite(sf::Sprite& sprite)
   if (sprite.getPosition().x < 0)
     sprite.setPosition(0.f, sprite.getPosition().y);
   //left edge
-  else if (sprite.getPosition().x + sprite.getGlobalBounds().width >= window_width)
+  else if (sprite.getPosition().x + sprite.getGlobalBounds().width > window_width)
     sprite.setPosition(window_width - sprite.getGlobalBounds().width, sprite.getPosition().y);
   //right edge
   else if (sprite.getPosition().y < 0)
     sprite.setPosition(sprite.getPosition().x, 0.f);
   //top edge
-  else if (sprite.getPosition().y + sprite.getGlobalBounds().height >= window_height)
+  else if (sprite.getPosition().y + sprite.getGlobalBounds().height > window_height)
     sprite.setPosition(sprite.getPosition().x, window_height - sprite.getGlobalBounds().height);
   //bottom edge
 }
