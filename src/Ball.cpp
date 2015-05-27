@@ -1,4 +1,10 @@
-
+//------------------------------------------------------------------------------
+// ball.cpp
+// Description : all things, which happend with the ball
+// 
+// Author : Stefan Papst
+// Softwareengeneering and Businessmanagement @ TU GRAZ
+//------------------------------------------------------------------------------      
 
 #include "Ball.h"
 

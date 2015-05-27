@@ -1,4 +1,10 @@
-
+//------------------------------------------------------------------------------
+// Events.h
+// Description : handles events
+// 
+// Author : Stefan Papst
+// Softwareengeneering and Businessmanagement @ TU GRAZ
+//------------------------------------------------------------------------------      
 
 #include "Ball.h"
 #include "InitWindow.h"

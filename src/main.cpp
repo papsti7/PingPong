@@ -6,7 +6,7 @@
 // Softwareengeneering and Businessmanagement @ TU GRAZ
 //------------------------------------------------------------------------------                                                                                
 
-#include <iostream>
+
 
 #include "Game.h"
 
