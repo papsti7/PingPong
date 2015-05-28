@@ -11,11 +11,12 @@
 
 class Events
 {
+
   public:
     Events(){ };
     Events(const Events& original) = delete;
 
-    void keyPressHandling(sf::Sprite& ball);
+    void keyPressHandling(Ball& ball);
     void clampingBall(sf::Sprite& ball, const InitWindow& window);
     void startGameEvent(sf::Sprite& ball);
 };

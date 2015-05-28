@@ -30,3 +30,9 @@ sf::Sprite& Ball::getBall()
 {
   return ball_;
 }
+
+void Ball::changeSpeed(int change_x, int change_y)
+{
+  speed_x_ += change_x;
+  speed_y_ += change_y;
+}

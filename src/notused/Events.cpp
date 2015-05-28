@@ -8,11 +8,11 @@
 
 #include "Events.h"
 
-void Events::keyPressHandling(sf::Sprite& ball)
+void Events::keyPressHandling(Ball& ball)
 {
   //smooth movement
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    ball.move(0.f, -5.f);
+    ball.changeSpeed(0, -5);
   //std::cout << "notized key W" << std::endl;
   else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     ball.move(0.f, 5.f);

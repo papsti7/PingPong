@@ -9,13 +9,15 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "Speed.h"
+
 class Ball
 {
   private:
 
   sf::Sprite ball_;
   sf::Texture smiley_;
-
+  //Speed speed;
 
   public:
 
