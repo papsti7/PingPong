@@ -12,6 +12,8 @@
 class Game
 {
 
+  private:
+  bool start_game_;
 
   public:
 

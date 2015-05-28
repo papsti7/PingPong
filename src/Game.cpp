@@ -8,7 +8,7 @@
 
 #include "Game.h"
 
-Game::Game(){   };
+Game::Game() : start_game_(false) {   };
 
 void Game::run()
 {
@@ -30,10 +30,21 @@ void Game::run()
         break;
       }
     }
-    
     Events events;
-    events.keyPressHandling(ball.getBall());
-    events.clampingBall(ball.getBall(), settings);
+    if (!start_game_)
+    {
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+      {
+        events.startGameEvent(ball.getBall());
+        start_game_ = true;
+      }
+    }
+    else
+    {
+      events.keyPressHandling(ball.getBall());
+      events.clampingBall(ball.getBall(), settings);
+    }
+    
 
 
     window.clear();

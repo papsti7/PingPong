@@ -17,4 +17,5 @@ class Events
 
     void keyPressHandling(sf::Sprite& ball);
     void clampingBall(sf::Sprite& ball, const InitWindow& window);
+    void startGameEvent(sf::Sprite& ball);
 };

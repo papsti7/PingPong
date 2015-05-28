@@ -41,3 +41,8 @@ void Events::clampingBall(sf::Sprite& ball, const InitWindow& window)
     ball.setPosition(ball.getPosition().x, window.getWindowHeight() - ball.getGlobalBounds().height);
   //bottom edge
 }
+
+void Events::startGameEvent(sf::Sprite& ball)
+{
+  ball.move(5.f, 0.f);
+}
