@@ -15,8 +15,7 @@ void Game::run()
   InitWindow settings(600, 600, "SFML PingPong");
   sf::RenderWindow window;
   settings.createWindow(window);
-  Ball ball;
-  ball.loadTextureToSprite();
+  
 
   while (window.isOpen())
   {
@@ -30,27 +29,15 @@ void Game::run()
         break;
       }
     }
-    Events events;
-    if (!start_game_)
-    {
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-      {
-        events.startGameEvent(ball.getBall());
-        start_game_ = true;
-      }
-    }
-    else
-    {
-      events.keyPressHandling(ball.getBall());
-      events.clampingBall(ball.getBall(), settings);
-    }
+    
+  }
     
 
 
     window.clear();
     window.draw(settings.getBackground());
-    window.draw(ball.getBall());
+   
     window.display();
   }
 
-}
+

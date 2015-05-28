@@ -6,7 +6,7 @@
 // Softwareengeneering and Businessmanagement @ TU GRAZ
 //------------------------------------------------------------------------------   
 
-#include "Events.h"
+#include "InitWindow.h"
 
 
 class Game
