@@ -12,9 +12,9 @@ Game::Game() : start_game_(false) {   };
 
 void Game::run()
 {
-  InitWindow settings(600, 600, "SFML PingPong");
+  //InitWindow settings(600, 600, "SFML PingPong");
   sf::RenderWindow window;
-  settings.createWindow(window);
+  //settings.createWindow(window);
   
 
   while (window.isOpen())
@@ -29,14 +29,20 @@ void Game::run()
         break;
       }
     }
-    
   }
-    
+  /*
+    Player player_one(settings);
+    player_one.createPlayerLeft(settings);
+    Player player_two(settings);
+    player_two.createPlayerRight(settings);
+  */
+
 
 
     window.clear();
-    window.draw(settings.getBackground());
-   
+    //window.draw(settings.getBackground());
+    //window.draw(player_one.getPlayerBat());
+    //window.draw(player_two.getPlayerBat());
     window.display();
   }
 

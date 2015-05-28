@@ -27,7 +27,7 @@ class InitWindow
 
     InitWindow(const InitWindow& orignal) = delete;
 
-    void createWindow(sf::RenderWindow&);
+    void createWindow(sf::RenderWindow& window);
 
     //-----------------Setter---------------------------------------------------
     void setBackgroundColor(sf::Color color);
