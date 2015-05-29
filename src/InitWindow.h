@@ -1,3 +1,5 @@
+#ifndef INITWINDOW_H
+#define INITWINDOW_H
 //------------------------------------------------------------------------------
 // InitWindow.h
 // Description : all things, which happend with the ball
@@ -40,3 +42,4 @@ class InitWindow
 
 
 };
+#endif INITWINDOW_H

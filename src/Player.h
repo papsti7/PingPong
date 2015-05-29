@@ -1,5 +1,5 @@
-
-
+#ifndef PLAYER_H
+#define PLAYER_H
 #include <SFML\Graphics.hpp>
 #include "InitWindow.h"
 
@@ -25,6 +25,7 @@ class Player
     void createPlayerLeft(const InitWindow& window);
     void createPlayerRight(const InitWindow& window);
         
-    sf::RectangleShape getPlayerBat() const;
+    sf::RectangleShape& getPlayerBat();
 
 };
+#endif PLAYER_H

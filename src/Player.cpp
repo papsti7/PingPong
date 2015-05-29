@@ -15,7 +15,7 @@ void Player::createPlayerRight(const InitWindow& window)
   bat_.setFillColor(sf::Color::Black);
 }
 
-sf::RectangleShape Player::getPlayerBat() const
+sf::RectangleShape& Player::getPlayerBat()
 {
   return bat_;
 }

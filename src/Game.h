@@ -1,3 +1,5 @@
+#ifndef GAME_H
+#define GAME_H
 //------------------------------------------------------------------------------
 // Game.h
 // Description : 
@@ -24,3 +26,4 @@ class Game
 
     void run();
 };
+#endif GAME_H
