@@ -19,7 +19,7 @@ class Player
 
     Player(const InitWindow& window) : speed_x_(0), speed_y_(0) 
     {  
-      middle_point_ = static_cast<float>(window.getWindowHeight() + window.getWindowHeight() / 16);
+      middle_point_ = window.getWindowHeight() / 2.f - window.getWindowHeight() / 20.f;
     }
     
     void createPlayerLeft(const InitWindow& window);

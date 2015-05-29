@@ -21,6 +21,7 @@ InitWindow::InitWindow(unsigned window_width, unsigned window_height, std::strin
 void InitWindow::setBackgroundColor(sf::Color color)
 {
   background_.setFillColor(color);
+
 }
 
 void InitWindow::createWindow(sf::RenderWindow& window)

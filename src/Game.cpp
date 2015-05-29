@@ -29,20 +29,21 @@ void Game::run()
         break;
       }
     }
-  }
-  
-    Player player_left(settings);
-    player_left.createPlayerLeft(settings);
-    Player player_right(settings);
-    player_right.createPlayerRight(settings);
+	Player player_left(settings);
+	player_left.createPlayerLeft(settings);
+	Player player_right(settings);
+	player_right.createPlayerRight(settings);
 
 	
 
-    window.clear(sf::Color::Black);
+	window.clear();
 	window.draw(settings.getBackground());
 	window.draw(player_left.getPlayerBat());
-    window.draw(player_right.getPlayerBat());
-    window.display();
+	window.draw(player_right.getPlayerBat());
+	window.display();
+  }
+  
+    
 	
   }
 
