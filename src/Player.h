@@ -6,8 +6,8 @@
 class Player
 {
   private:
-  int speed_x_;
-  int speed_y_;
+  //int speed_x_;
+  //int speed_y_;
   sf::RectangleShape bat_;
   float middle_point_;
 
@@ -17,13 +17,13 @@ class Player
     Player() = delete;
     Player(const Player& original) = delete;
 
-    Player(const InitWindow& window) : speed_x_(0), speed_y_(0) 
+    Player(InitWindow& window)// : speed_x_(0), speed_y_(0) 
     {  
       middle_point_ = window.getWindowHeight() / 2.f - window.getWindowHeight() / 20.f;
     }
     
-    void createPlayerLeft(const InitWindow& window);
-    void createPlayerRight(const InitWindow& window);
+    void createPlayerLeft(InitWindow& window);
+    void createPlayerRight(InitWindow& window);
         
     sf::RectangleShape& getPlayerBat();
 

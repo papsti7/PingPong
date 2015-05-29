@@ -24,16 +24,31 @@ void InitWindow::setBackgroundColor(sf::Color color)
 
 }
 
-void InitWindow::createWindow(sf::RenderWindow& window)
+void InitWindow::createGamePanel(sf::RenderWindow& window)
 {
   window.create(sf::VideoMode(window_height_, window_width_), window_name_);
   window.setVerticalSyncEnabled(true);
   //create background with color "white
   background_.setSize(sf::Vector2f(static_cast<float>(window_height_), static_cast<float>(window_width_)));
   background_.setFillColor(sf::Color::White);
-
-  
+  //design
+  sf::RectangleShape middle_line;
+  middle_line.setSize(sf::Vector2f(window_width_ / 100.f, window_height_));
+  middle_line.setPosition(window_width_ / 2.f - middle_line.getSize().x / 2.f, 0.f);
+  middle_line.setFillColor(sf::Color::Black);
+  design_rect_.push_back(middle_line);
+    
 }
+
+void InitWindow::pushbackDesignRect(sf::RectangleShape& new_design_detail)
+{
+	design_rect_.push_back(new_design_detail);
+}
+void InitWindow::pushbackDesignText(sf::Text& new_design_detail)
+{
+	design_text_.push_back(new_design_detail);
+}
+
 
 unsigned InitWindow::getWindowHeight() const
 {
@@ -47,4 +62,13 @@ unsigned InitWindow::getWindowWidth() const
 sf::RectangleShape InitWindow::getBackground() const
 {
   return background_;
+}
+
+std::vector<sf::RectangleShape>& InitWindow::getDesignRect()
+{
+	return design_rect_;
+}
+std::vector<sf::Text>& InitWindow::getDesignText()
+{
+	return design_text_;
 }
