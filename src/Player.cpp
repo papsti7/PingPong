@@ -25,3 +25,19 @@ sf::RectangleShape& Player::getPlayerBat()
 {
   return bat_;
 }
+
+void Player::addUpSpeed()
+{
+  if (bat_.getPosition().y <= 0.f)
+    bat_.setPosition(bat_.getPosition().x, 0.f);
+  else
+    bat_.move(0.f, -5.f);
+}
+
+void Player::addDownSpeed(const InitWindow& window)
+{
+  if (bat_.getPosition().y + bat_.getSize().y >= window.getWindowHeight())
+    bat_.setPosition(bat_.getPosition().x, window.getWindowHeight() - bat_.getSize().y);
+  else
+    bat_.move(0.f, 5.f);
+}

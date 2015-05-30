@@ -24,6 +24,9 @@ class Player
     
     void createPlayerLeft(InitWindow& window);
     void createPlayerRight(InitWindow& window);
+
+	void addUpSpeed();
+	void addDownSpeed(const InitWindow& window);
         
     sf::RectangleShape& getPlayerBat();
 

@@ -25,5 +25,7 @@ class Game
     Game(const Game& origin) = delete;
 
     void run();
+
+	void checkPlayerMovement(Player& player_left, Player& player_right, const InitWindow& window);
 };
 #endif GAME_H
