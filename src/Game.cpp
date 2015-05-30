@@ -20,6 +20,13 @@ void Game::run()
   Player player_right(settings);
   player_left.createPlayerLeft(settings);
   player_right.createPlayerRight(settings);
+  //set up names
+  sf::Text player_left_name(settings.getDesignText().at(0), settings.getFont());
+  player_left_name.setColor(sf::Color::Black);
+  player_left_name.setPosition(50.f, 50.f);
+  sf::Text player_right_name(settings.getDesignText().at(1), settings.getFont());
+  player_right_name.setColor(sf::Color::Black);
+  player_right_name.setPosition(settings.getWindowWidth() - 240.f, 50.f);
 
   while (window.isOpen())
   {
@@ -38,12 +45,13 @@ void Game::run()
 	window.clear();
 	window.draw(settings.getBackground());
 
+	//gamepanel and names
 	for (auto& design : settings.getDesignRect())
 		window.draw(design);
-
-	//for (auto& design : settings.getDesignText())
-		//window.draw(settings.getDesignText().at(1));
-		
+	window.draw(player_left_name);
+	window.draw(player_right_name);
+	
+	//bats
 	window.draw(player_left.getPlayerBat());
 	window.draw(player_right.getPlayerBat());
 	window.display();
@@ -51,6 +59,6 @@ void Game::run()
   
     
 	
-  }
+}
 
 

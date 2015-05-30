@@ -10,13 +10,15 @@
 #include "InitWindow.h"
 
 InitWindow::InitWindow() : window_height_(500), window_width_(500), window_name_("PingPong")
-{ }
+{
+	font_.loadFromFile("arial.ttf");
+}
 
 InitWindow::InitWindow(unsigned window_width, unsigned window_height, std::string window_name) :
   window_width_(window_width),
   window_height_(window_height),
   window_name_(window_name)
-{ }
+{ font_.loadFromFile("arial.ttf"); }
 
 void InitWindow::setBackgroundColor(sf::Color color)
 {
@@ -44,7 +46,8 @@ void InitWindow::pushbackDesignRect(sf::RectangleShape& new_design_detail)
 {
 	design_rect_.push_back(new_design_detail);
 }
-void InitWindow::pushbackDesignText(sf::Text& new_design_detail)
+
+void InitWindow::pushbackDesignText(std::string& new_design_detail)
 {
 	design_text_.push_back(new_design_detail);
 }
@@ -68,7 +71,12 @@ std::vector<sf::RectangleShape>& InitWindow::getDesignRect()
 {
 	return design_rect_;
 }
-std::vector<sf::Text>& InitWindow::getDesignText()
+std::vector<std::string>& InitWindow::getDesignText()
 {
 	return design_text_;
+}
+
+sf::Font& InitWindow::getFont()
+{
+	return font_;
 }

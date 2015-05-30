@@ -20,7 +20,8 @@ class InitWindow
   std::string window_name_;
   sf::RectangleShape background_;
   std::vector<sf::RectangleShape> design_rect_;
-  std::vector<sf::Text> design_text_;
+  std::vector<std::string> design_text_;
+  sf::Font font_;
 
 
   public:
@@ -33,7 +34,7 @@ class InitWindow
 
     void createGamePanel(sf::RenderWindow& window);
 	void pushbackDesignRect(sf::RectangleShape& new_design_detail);
-	void pushbackDesignText(sf::Text& new_design_detail);
+	void pushbackDesignText(std::string& new_design_detail);
 
     //-----------------Setter---------------------------------------------------
     void setBackgroundColor(sf::Color color);
@@ -44,7 +45,8 @@ class InitWindow
     unsigned getWindowWidth() const;
     sf::RectangleShape getBackground() const;
 	std::vector<sf::RectangleShape>& getDesignRect(); 
-	std::vector<sf::Text>& getDesignText();
+	std::vector<std::string>& getDesignText();
+	sf::Font& getFont();
 
 
 
