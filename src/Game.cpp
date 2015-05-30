@@ -50,7 +50,7 @@ void Game::run()
 		window.draw(design);
 	window.draw(player_left_name);
 	window.draw(player_right_name);
-	
+	//dsfdf
 	//bats
 	window.draw(player_left.getPlayerBat());
 	window.draw(player_right.getPlayerBat());
