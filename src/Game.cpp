@@ -42,6 +42,7 @@ void Game::run()
     }
 	
     checkPlayerMovement(player_left, player_right, settings);
+
 	  //movePosition() --> move() + reduceSpeed()
 	  window.clear();
 	  window.draw(settings.getBackground());
@@ -66,10 +67,10 @@ void Game::checkPlayerMovement(Player& player_left, Player& player_right, const 
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		player_left.addUpSpeed();
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 		player_left.addDownSpeed(window);
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		player_right.addUpSpeed();
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		player_right.addDownSpeed(window);
 }
