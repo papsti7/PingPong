@@ -35,30 +35,41 @@ void Game::run()
     {
       switch (event.type)
       {
-      case sf::Event::Closed:
-        window.close();
-        break;
+        case sf::Event::Closed:
+          window.close();
+          break;
       }
     }
 	
-	
-	window.clear();
-	window.draw(settings.getBackground());
+    checkPlayerMovement(player_left, player_right, settings);
+	  //movePosition() --> move() + reduceSpeed()
+	  window.clear();
+	  window.draw(settings.getBackground());
 
-	//gamepanel and names
-	for (auto& design : settings.getDesignRect())
-		window.draw(design);
-	window.draw(player_left_name);
-	window.draw(player_right_name);
-	//dsfdf
-	//bats
-	window.draw(player_left.getPlayerBat());
-	window.draw(player_right.getPlayerBat());
-	window.display();
+	  //gamepanel and names
+	  for (auto& design : settings.getDesignRect())
+		  window.draw(design);
+	  window.draw(player_left_name);
+	  window.draw(player_right_name);
+	
+	  //bats
+	  window.draw(player_left.getPlayerBat());
+	  window.draw(player_right.getPlayerBat());
+	  window.display();
   }
   
     
 	
 }
 
-
+void Game::checkPlayerMovement(Player& player_left, Player& player_right, const InitWindow& window)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		player_left.addUpSpeed();
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		player_left.addDownSpeed(window);
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		player_right.addUpSpeed();
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		player_right.addDownSpeed(window);
+}
