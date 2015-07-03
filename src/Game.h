@@ -10,7 +10,7 @@
 
 #include "InitWindow.h"
 #include "Player.h"
-
+#include "Ball.h"
 
 class Game
 {

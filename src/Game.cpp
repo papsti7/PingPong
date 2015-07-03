@@ -28,6 +28,11 @@ void Game::run()
   player_right_name.setColor(sf::Color::Black);
   player_right_name.setPosition(settings.getWindowWidth() - 240.f, 50.f);
 
+  //create Ball
+  Ball ball;
+  ball.create(settings);
+
+
   while (window.isOpen())
   {
     sf::Event event;
@@ -56,7 +61,13 @@ void Game::run()
 	  //bats
 	  window.draw(player_left.getPlayerBat());
 	  window.draw(player_right.getPlayerBat());
-	  window.display();
+	  
+
+    //ball
+    window.draw(ball.getBall());
+
+
+    window.display();
   }
   
     
