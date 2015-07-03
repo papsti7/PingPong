@@ -18,15 +18,16 @@ private:
   sf::CircleShape ball;
   float speed_x;
   float speed_y;
-
+  sf::Vector2f speed_up;
 
 
 
 public:
 
-  Ball() { }
+  Ball() : speed_x(0.f), speed_y(0.f) , speed_up(5.f, 5.f) { }
 
   void create(const InitWindow& Window);
+  void move();
 
 
   sf::CircleShape& getBall();
