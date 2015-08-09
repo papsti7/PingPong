@@ -9,28 +9,29 @@
 //------------------------------------------------------------------------------   
 
 #include "InitWindow.h"
-
+#include "Player.h"
 
 
 class Ball
 {
 private:
   sf::CircleShape ball;
-  float speed_x;
-  float speed_y;
+  //float speed_x;
+  //float speed_y;
   sf::Vector2f speed_up;
 
 
 
 public:
 
-  Ball() : speed_x(0.f), speed_y(0.f) , speed_up(5.f, 5.f) { }
+	Ball() : speed_up(0.f, 0.f) { }	//speed_x(0.f), speed_y(0.f) , speed_up(5.f, 5.f) { }
 
   void create(const InitWindow& Window);
-  void move();
+  void update(const InitWindow& window, Player& player_left, Player& player_right, int& state);
 
   void resetBallPos(const InitWindow& window);
 
+  void setSpeed(float x, float y);
 
   sf::CircleShape& getBall();
 

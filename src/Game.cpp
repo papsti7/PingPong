@@ -69,6 +69,7 @@ void Game::run()
 
 		//ball
 		ball.resetBallPos(settings);
+		ball.setSpeed(3.f, 2.f);
 		window.draw(ball.getBall());
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
@@ -94,6 +95,8 @@ void Game::run()
 
 
 		//ball
+		
+		ball.update(settings, player_left, player_right, state);
 		window.draw(ball.getBall());
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 			state = 0;
