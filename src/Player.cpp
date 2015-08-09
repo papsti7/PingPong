@@ -41,3 +41,13 @@ void Player::addDownSpeed(const InitWindow& window)
   else
     bat_.move(0.f, 5.f);
 }
+
+void Player::resetPlayerLeftBat()
+{
+	bat_.setPosition(5.f, middle_point_);
+}
+
+void Player::resetPlayerRightBat(const InitWindow& window)
+{
+	bat_.setPosition(window.getWindowWidth() - bat_.getSize().x - 5.f, middle_point_);
+}

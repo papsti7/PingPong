@@ -32,6 +32,8 @@ void Game::run()
   Ball ball;
   ball.create(settings);
 
+  int state = 0;
+
 
   while (window.isOpen())
   {
@@ -45,27 +47,63 @@ void Game::run()
           break;
       }
     }
-	
-    checkPlayerMovement(player_left, player_right, settings);
+	switch (state)
+	{
+	case 0:
+		//movePosition() --> move() + reduceSpeed()
+		window.clear();
+		window.draw(settings.getBackground());
 
-	  //movePosition() --> move() + reduceSpeed()
-	  window.clear();
-	  window.draw(settings.getBackground());
+		//gamepanel and names
+		for (auto& design : settings.getDesignRect())
+			window.draw(design);
+		window.draw(player_left_name);
+		window.draw(player_right_name);
 
-	  //gamepanel and names
-	  for (auto& design : settings.getDesignRect())
-		  window.draw(design);
-	  window.draw(player_left_name);
-	  window.draw(player_right_name);
-	
-	  //bats
-	  window.draw(player_left.getPlayerBat());
-	  window.draw(player_right.getPlayerBat());
-	  
+		//bats
+		player_left.resetPlayerLeftBat();
+		player_right.resetPlayerRightBat(settings);
+		window.draw(player_left.getPlayerBat());
+		window.draw(player_right.getPlayerBat());
 
-    //ball
-    window.draw(ball.getBall());
 
+		//ball
+		ball.resetBallPos(settings);
+		window.draw(ball.getBall());
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+			state = 1;
+		break;
+
+	case 1:
+		checkPlayerMovement(player_left, player_right, settings);
+
+		//movePosition() --> move() + reduceSpeed()
+		window.clear();
+		window.draw(settings.getBackground());
+
+		//gamepanel and names
+		for (auto& design : settings.getDesignRect())
+			window.draw(design);
+		window.draw(player_left_name);
+		window.draw(player_right_name);
+
+		//bats
+		window.draw(player_left.getPlayerBat());
+		window.draw(player_right.getPlayerBat());
+
+
+		//ball
+		window.draw(ball.getBall());
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+			state = 0;
+		break;
+
+
+	default:
+		break;
+	}
+	    
 
     window.display();
   }
@@ -85,3 +123,4 @@ void Game::checkPlayerMovement(Player& player_left, Player& player_right, const 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		player_right.addDownSpeed(window);
 }
+

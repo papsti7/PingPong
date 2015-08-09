@@ -29,6 +29,8 @@ public:
   void create(const InitWindow& Window);
   void move();
 
+  void resetBallPos(const InitWindow& window);
+
 
   sf::CircleShape& getBall();
 

@@ -27,5 +27,6 @@ class Game
     void run();
 
 	void checkPlayerMovement(Player& player_left, Player& player_right, const InitWindow& window);
+
 };
 #endif GAME_H

@@ -22,3 +22,9 @@ sf::CircleShape& Ball::getBall()
 {
   return ball;
 }
+
+void Ball::resetBallPos(const InitWindow& window)
+{
+	ball.setPosition(float(window.getWindowWidth() / 2.f + ball.getGlobalBounds().width / 2.f), float(Window.getWindowHeight() / 2.f + ball.getGlobalBounds().height / 2.f));
+
+}

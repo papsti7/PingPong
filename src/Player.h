@@ -28,6 +28,9 @@ class Player
 	void addUpSpeed();
 	void addDownSpeed(const InitWindow& window);
         
+	void resetPlayerLeftBat();
+	void resetPlayerRightBat(const InitWindow& window);
+
     sf::RectangleShape& getPlayerBat();
 
 };
