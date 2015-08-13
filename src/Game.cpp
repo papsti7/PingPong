@@ -8,6 +8,8 @@
 
 #include "Game.h"
 
+using namespace std::chrono;
+
 Game::Game() : start_game_(false) {   };
 
 void Game::run()
@@ -47,10 +49,19 @@ void Game::run()
           break;
       }
     }
+	// Use time for the random seed, nanoseconds should be enough precision
+	auto time = duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count();
+	//Init random engine with the time as seed (fixed value during debugging to have the same value
+	//each run)
+	std::default_random_engine engine(time);
+	//Real distribution for floating numbers
+	std::uniform_real_distribution<float> float_dist_x(-8.0f, 8.0f);
+	std::uniform_real_distribution<float> float_dist_y(-8.0f, 8.0f);
+
 	switch (state)
 	{
 	case 0:
-		//movePosition() --> move() + reduceSpeed()
+		
 		window.clear();
 		window.draw(settings.getBackground());
 
@@ -67,9 +78,12 @@ void Game::run()
 		window.draw(player_right.getPlayerBat());
 
 
+		
+
+
 		//ball
 		ball.resetBallPos(settings);
-		ball.setSpeed(3.f, 2.f);
+		ball.setSpeed(float_dist_x(engine) + 2.f, float_dist_y(engine) + 2.f);
 		window.draw(ball.getBall());
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
