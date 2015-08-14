@@ -11,6 +11,7 @@
 #include "InitWindow.h"
 #include "Player.h"
 
+enum Result { LEFT_WON, RIGHT_WON, NOTHING };
 
 class Ball
 {
@@ -27,7 +28,8 @@ public:
 	Ball() : speed_up(0.f, 0.f) { }	//speed_x(0.f), speed_y(0.f) , speed_up(5.f, 5.f) { }
 
   void create(const InitWindow& Window);
-  void update(const InitWindow& window, Player& player_left, Player& player_right, int& state);
+
+  Result update(const InitWindow& window, Player& player_left, Player& player_right, int& state);
 
   void resetBallPos(const InitWindow& window);
 

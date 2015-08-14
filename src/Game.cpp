@@ -10,7 +10,7 @@
 
 using namespace std::chrono;
 
-Game::Game() : start_game_(false) {   };
+Game::Game() : score_player_left_(0), score_player_right_(0) {   };
 
 void Game::run()
 {
@@ -57,6 +57,9 @@ void Game::run()
 	//Real distribution for floating numbers
 	std::uniform_real_distribution<float> float_dist_x(-8.0f, 8.0f);
 	std::uniform_real_distribution<float> float_dist_y(-8.0f, 8.0f);
+
+
+	int change;
 
 	switch (state)
 	{
@@ -109,8 +112,27 @@ void Game::run()
 
 
 		//ball
+
+		change = ball.update(settings, player_left, player_right, state);
+
+		if(change = LEFT_WON)
+			increaseScorePlayerLeft();
+		else if (change = RIGHT_WON)
+			increaseScorePlayerRight();
+		std::cout << score_player_left_ << ":" << score_player_right_ << std::endl;
+		if (score_player_left_ >= 5)
+		{
+			std::cout << "Player Left won!!" << std::endl;
+			state = 0;
+			resetScore();
+		}
+		else if (score_player_right_ >= 5)
+		{
+			std::cout << "Player Right won!!" << std::endl;
+			state = 0;
+			resetScore();
+		}
 		
-		ball.update(settings, player_left, player_right, state);
 		window.draw(ball.getBall());
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 			state = 0;
@@ -141,3 +163,18 @@ void Game::checkPlayerMovement(Player& player_left, Player& player_right, const 
 		player_right.addDownSpeed(window);
 }
 
+void Game::increaseScorePlayerLeft()
+{
+	score_player_left_++;
+}
+
+void Game::increaseScorePlayerRight()
+{
+	score_player_right_++;
+}
+
+void Game::resetScore()
+{
+	score_player_left_ = 0;
+	score_player_right_ = 0;
+}
