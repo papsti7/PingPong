@@ -27,13 +27,22 @@ Result Ball::update(const InitWindow& window, Player& player_left, Player& playe
 		return RIGHT_WON;
 	}
 	else if (ball.getPosition().x >= (player_right.getPlayerBat().getPosition().x - ball.getRadius()*2.f) && ((ball.getPosition().y + ball.getRadius()) >= player_right.getPlayerBat().getPosition().y &&
-			 (ball.getPosition().y + ball.getRadius()) <= (player_right.getPlayerBat().getPosition().y + player_right.getPlayerBat().getSize().y)))
+		(ball.getPosition().y + ball.getRadius()) <= (player_right.getPlayerBat().getPosition().y + player_right.getPlayerBat().getSize().y)))
+	{
+		ball.setPosition(player_right.getPlayerBat().getPosition().x - ball.getGlobalBounds().width, ball.getPosition().y);
 		speed_up.x *= -1.f;
+	}
+		
 	else if (ball.getPosition().x <= (player_left.getPlayerBat().getSize().x + 5.f) && ((ball.getPosition().y + ball.getRadius()) >= player_left.getPlayerBat().getPosition().y &&
 		(ball.getPosition().y + ball.getRadius()) <= (player_left.getPlayerBat().getPosition().y + player_left.getPlayerBat().getSize().y)))
+	{
+		ball.setPosition(player_left.getPlayerBat().getPosition().x + player_left.getPlayerBat().getGlobalBounds().width, ball.getPosition().y);
 		speed_up.x *= -1.f;
+	}
+		
 	return NOTHING;
 }
+
 
 
 sf::CircleShape& Ball::getBall()

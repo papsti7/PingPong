@@ -17,7 +17,7 @@ void Player::createPlayerRight(InitWindow& window)
   bat_.setPosition(window.getWindowWidth() - bat_.getSize().x - 5.f, middle_point_);
   bat_.setFillColor(sf::Color::Black);
   //create name design
-  std::string player_name("Julia");
+  std::string player_name("TestPlayer");
   window.pushbackDesignText(player_name);
 }
 
