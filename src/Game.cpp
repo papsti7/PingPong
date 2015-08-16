@@ -114,12 +114,20 @@ void Game::run()
 		//ball
 
 		change = ball.update(settings, player_left, player_right, state);
-
-		if(change = LEFT_WON)
+		
+		if (change == LEFT_WON)
+		{
 			increaseScorePlayerLeft();
-		else if (change = RIGHT_WON)
+			std::cout << score_player_left_ << ":" << score_player_right_ << std::endl;
+		}
+		else if (change == RIGHT_WON)
+		{
 			increaseScorePlayerRight();
-		std::cout << score_player_left_ << ":" << score_player_right_ << std::endl;
+			std::cout << score_player_left_ << ":" << score_player_right_ << std::endl;
+		}
+			
+
+
 		if (score_player_left_ >= 5)
 		{
 			std::cout << "Player Left won!!" << std::endl;

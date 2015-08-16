@@ -19,14 +19,12 @@ Result Ball::update(const InitWindow& window, Player& player_left, Player& playe
 	else if (ball.getPosition().x >= (window.getWindowWidth() - ball.getRadius()*2.f))
 	{
 		state = 0;
-		std::cout << "check" << std::endl;
-		return RIGHT_WON;
+		return LEFT_WON;
 	}
 	else if (ball.getPosition().x <= 0.f)
 	{
 		state = 0;
-		std::cout << "check2" << std::endl;
-		return LEFT_WON;
+		return RIGHT_WON;
 	}
 	else if (ball.getPosition().x >= (player_right.getPlayerBat().getPosition().x - ball.getRadius()*2.f) && ((ball.getPosition().y + ball.getRadius()) >= player_right.getPlayerBat().getPosition().y &&
 			 (ball.getPosition().y + ball.getRadius()) <= (player_right.getPlayerBat().getPosition().y + player_right.getPlayerBat().getSize().y)))

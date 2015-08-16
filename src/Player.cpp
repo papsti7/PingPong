@@ -8,7 +8,7 @@ void Player::createPlayerLeft(InitWindow& window)
   bat_.setPosition(5.f, middle_point_);
   bat_.setFillColor(sf::Color::Black);
   //create name design
-  std::string player_name("Player Left");
+  std::string player_name("Stefan");
   window.pushbackDesignText(player_name);
 }
 void Player::createPlayerRight(InitWindow& window)
@@ -17,7 +17,7 @@ void Player::createPlayerRight(InitWindow& window)
   bat_.setPosition(window.getWindowWidth() - bat_.getSize().x - 5.f, middle_point_);
   bat_.setFillColor(sf::Color::Black);
   //create name design
-  std::string player_name("Player Right");
+  std::string player_name("Julia");
   window.pushbackDesignText(player_name);
 }
 
