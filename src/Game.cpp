@@ -55,11 +55,13 @@ void Game::run()
 	//each run)
 	std::default_random_engine engine(time);
 	//Real distribution for floating numbers
-	std::uniform_real_distribution<float> float_dist_x(-8.0f, 8.0f);
-	std::uniform_real_distribution<float> float_dist_y(-8.0f, 8.0f);
+	std::uniform_real_distribution<float> float_dist_x(-4.f, 4.f);
+	std::uniform_real_distribution<float> float_dist_y(-4.f, 4.f);
 
 
 	int change;
+	float speed_x = float_dist_x(engine);
+	float speed_y = float_dist_y(engine);
 
 	switch (state)
 	{
@@ -86,7 +88,22 @@ void Game::run()
 
 		//ball
 		ball.resetBallPos(settings);
-		ball.setSpeed(float_dist_x(engine) + 2.f, float_dist_y(engine) + 2.f);
+		
+
+		if (speed_x <= 2.f && speed_x >= 0.f)
+			speed_x += 2.5f;
+		else if (speed_x >= -2.f && speed_x <= 0.f)
+			speed_x -= 2.5f;
+
+		if (speed_y <= 2.f && speed_y >= 0.f)
+			speed_y += 2.5f;
+		else if (speed_y >= -2.f && speed_y <= 0.f)
+			speed_y -= 2.5f;
+
+		
+
+		//std::cout << "Ballspeed: " << speed_x << "|" << speed_y << std::endl;
+		ball.setSpeed(speed_x, speed_y);
 		window.draw(ball.getBall());
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
@@ -96,7 +113,7 @@ void Game::run()
 	case 1:
 		checkPlayerMovement(player_left, player_right, settings);
 
-		//movePosition() --> move() + reduceSpeed()
+		
 		window.clear();
 		window.draw(settings.getBackground());
 
