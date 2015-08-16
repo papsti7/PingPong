@@ -5,7 +5,7 @@
 
 void Ball::create(const InitWindow& Window)
 {
-  ball.setPosition(float(Window.getWindowWidth() / 2.f + ball.getGlobalBounds().width / 2.f), float(Window.getWindowHeight() / 2.f + ball.getGlobalBounds().height / 2.f));
+  //ball.setPosition(100.f , Window.getWindowHeight() / 2.f);
   ball.setFillColor(sf::Color::Black);
   ball.setRadius(20.f);
   
@@ -43,7 +43,7 @@ sf::CircleShape& Ball::getBall()
 
 void Ball::resetBallPos(const InitWindow& window)
 {
-	ball.setPosition(float(window.getWindowWidth() / 2.f + ball.getGlobalBounds().width / 2.f), float(window.getWindowHeight() / 2.f + ball.getGlobalBounds().height / 2.f));
+	ball.setPosition(float(window.getWindowWidth() / 2.f - ball.getGlobalBounds().width / 2.f), float(window.getWindowHeight() / 2.f - ball.getGlobalBounds().height / 2.f));
 
 }
 
