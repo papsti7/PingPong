@@ -31,6 +31,17 @@ Result Ball::update(const InitWindow& window, Player& player_left, Player& playe
 	{
 		ball.setPosition(player_right.getPlayerBat().getPosition().x - ball.getGlobalBounds().width, ball.getPosition().y);
 		speed_up.x *= -1.f;
+	
+		if (speed_up.x < 0)
+			speed_up.x -= 0.3f;
+		else if (speed_up.x > 0)
+			speed_up.x += 0.3f;
+		if (speed_up.y < 0)
+			speed_up.y -= 0.3f;
+		else if (speed_up.y > 0)
+			speed_up.y += 0.3f;
+
+
 	}
 		
 	else if (ball.getPosition().x <= (player_left.getPlayerBat().getSize().x + 5.f) && ((ball.getPosition().y + ball.getRadius()) >= player_left.getPlayerBat().getPosition().y &&
@@ -38,6 +49,14 @@ Result Ball::update(const InitWindow& window, Player& player_left, Player& playe
 	{
 		ball.setPosition(player_left.getPlayerBat().getPosition().x + player_left.getPlayerBat().getGlobalBounds().width, ball.getPosition().y);
 		speed_up.x *= -1.f;
+		if (speed_up.x < 0)
+			speed_up.x -= 0.3f;
+		else if (speed_up.x > 0)
+			speed_up.x += 0.3f;
+		if (speed_up.y < 0)
+			speed_up.y -= 0.3f;
+		else if (speed_up.y > 0)
+			speed_up.y += 0.3f;
 	}
 		
 	return NOTHING;
